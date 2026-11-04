@@ -1,0 +1,20 @@
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        run: | 
+          git clone https://github.com/erfanebadi2004/say-hello.git
+          mv say-hello/{./}* .
+        
+      - name: Install python and pip
+        run: sudo apt-get update && sudo apt-get install -y python3 python3-pip
+        
+      - name: Install Dependences
+        run: pip install -r requirements.txt
+        
+      - name : Test App
+        run: pytest py_test.py
